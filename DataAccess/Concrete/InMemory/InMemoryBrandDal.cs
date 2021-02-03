@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete
 {
-    public class InMemoryBrandDal : ICarRentalDal<Brand>
+    public class InMemoryBrandDal : IBrandDal
     {
         List<Brand> _brands;
 

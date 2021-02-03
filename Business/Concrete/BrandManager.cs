@@ -9,9 +9,9 @@ namespace Business.Concrete
 {
     public class BrandManager : ICarRentalService<Brand>
     {
-        ICarRentalDal<Brand> _brandDal;
+        IEntityRepository<Brand> _brandDal;
 
-        public BrandManager(ICarRentalDal<Brand> carRentalDal)
+        public BrandManager(IEntityRepository<Brand> carRentalDal)
         {
             _brandDal = carRentalDal;
         }

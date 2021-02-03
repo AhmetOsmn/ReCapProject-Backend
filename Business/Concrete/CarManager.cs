@@ -9,8 +9,8 @@ namespace Business.Concrete
 {
     public class CarManager : ICarRentalService<Car>
     {
-        ICarRentalDal<Car> _carDal;
-        public CarManager(ICarRentalDal<Car> carRentalDal)
+        IEntityRepository<Car> _carDal;
+        public CarManager(IEntityRepository<Car> carRentalDal)
         {
             _carDal = carRentalDal;
         }

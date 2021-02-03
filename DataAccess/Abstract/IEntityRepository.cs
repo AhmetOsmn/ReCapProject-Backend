@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarRentalDal<T>
+    public interface IEntityRepository<T>
     {
         T GetById(int id);
         List<T> GetAll();

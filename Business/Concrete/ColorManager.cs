@@ -9,9 +9,9 @@ namespace Business.Concrete
 {
     public class ColorManager : ICarRentalService<Color>
     {
-        ICarRentalDal<Color> _colorDal;
+        IEntityRepository<Color> _colorDal;
 
-        public ColorManager(ICarRentalDal<Color> carRentalDal)
+        public ColorManager(IEntityRepository<Color> carRentalDal)
         {
             _colorDal = carRentalDal;
         }
