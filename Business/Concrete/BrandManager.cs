@@ -22,11 +22,19 @@ namespace Business.Concrete
 
         public Brand GetById(int id)
         {
-            return _brandDal.GetById(id);
+            return _brandDal.Get(p => p.BrandId == id);
         }
         public void Add(Brand brand)
         {
-            _brandDal.Add(brand);
+            if (brand.Name.Length >= 2)
+            {
+                _brandDal.Add(brand);
+            }
+            else
+            {
+                Console.WriteLine("Marka ismi en az 2 harften olusmali");
+            }
+            
         }
 
         public void Delete(Brand brand)

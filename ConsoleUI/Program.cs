@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using System;
 
@@ -12,40 +13,56 @@ namespace ConsoleUI
         static ColorManager colorManager;
         static void Main(string[] args)
         {
+            carManager = new CarManager(new EfCarDal());
+            brandManager = new BrandManager(new EfBrandDal());
+            colorManager = new ColorManager(new EfColorDal());
 
-            carManager = new CarManager(new InMemoryCarDal());
-            brandManager = new BrandManager(new InMemoryBrandDal());
-            colorManager = new ColorManager(new InMemoryColorDal());
-
-            Console.WriteLine("1. LISTE --------------------------------------------------------------------------------------------------------");
-            ShowCars();
-
-            Console.WriteLine("ARABA EKLENDI ---------------------------------------------------------------------------------------------------");
-            carManager.Add(new Car { Id = 7, BrandId = 5, ColorId = 4, DailyPrice = 500, ModelYear = "2000", Description = "Son arac" });
-            ShowCars();
-
-            Console.WriteLine("ARABA CIKARTILDI ------------------------------------------------------------------------------------------------");
-            carManager.Delete(carManager.GetById(1));
-            ShowCars();
-
-            Console.WriteLine("3. ARAC GUNCELLENDI ---------------------------------------------------------------------------------------------");
-            carManager.GetById(3).ColorId = 5;
-            carManager.Update(carManager.GetById(3));
-            ShowCars();
+            ShowCarsEf();
+            Console.WriteLine("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+            ShowCarsEfByColorId(1);
+            Console.WriteLine("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
+            ShowCarsEfByBrandId(1);
         }
 
-        public static void ShowCars()
+        public static void ShowCarsEf()
         {
-            
-
+            Console.WriteLine("-------BUTUN ARACLAR------ -");
             foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine(car.Id +
-                    " : Marka --> " + brandManager.GetById(car.BrandId).Name +
-                    " : Renk --> " + colorManager.GetById(car.ColorId).Name +
-                    " : Yil --> " + car.ModelYear +
-                    " : Gunluk Ucret --> " + car.DailyPrice +
-                    " : Aciklama --> " + car.Description);
+                Console.WriteLine("Arac Id: "+car.CarId + "-->" +
+                                  "Marka: "+brandManager.GetById(car.BrandId).Name + " " +
+                                  "Model: "+brandManager.GetById(car.BrandId).Model + " " +
+                                  "Renk: "+colorManager.GetById(car.ColorId).Name + " " +
+                                  "Yil: "+car.ModelYear + " " +
+                                  "Aciklama: "+car.Description);
+            }
+        }
+        public static void ShowCarsEfByColorId(int i)
+        {
+            Console.WriteLine("ColorId= {0} OLAN ARACLAR", i);
+
+            foreach (var car in carManager.GetCarsByColorId(i))
+            {
+                Console.WriteLine("Arac Id: " + car.CarId + ":" +
+                                  brandManager.GetById(car.BrandId).Name + " " +
+                                  brandManager.GetById(car.BrandId).Model + " " +
+                                  colorManager.GetById(car.ColorId).Name + " " +
+                                  car.ModelYear + " " +
+                                  car.Description);
+            }
+        }
+        public static void ShowCarsEfByBrandId(int i)
+        {
+            Console.WriteLine("BrandId= {0} OLAN ARACLAR", i);
+
+            foreach (var car in carManager.GetCarsByBrandId(i))
+            {
+                Console.WriteLine("Arac Id: " + car.CarId + ":" +
+                                  brandManager.GetById(car.BrandId).Name + " " +
+                                  brandManager.GetById(car.BrandId).Model + " " +
+                                  colorManager.GetById(car.ColorId).Name + " " +
+                                  car.ModelYear + " " +
+                                  car.Description);
             }
         }
     }

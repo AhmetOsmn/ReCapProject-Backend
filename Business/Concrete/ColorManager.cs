@@ -22,7 +22,7 @@ namespace Business.Concrete
 
         public Color GetById(int id)
         {
-            return _colorDal.GetById(id);
+            return _colorDal.Get(c => c.ColorId == id);
         }
         public void Add(Color color)
         {
