@@ -7,5 +7,6 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfColorDal : EfEntityRepositoryBase<Color, ReCapDatabaseContext>, IColorDal
     {
 
+
     }
 }

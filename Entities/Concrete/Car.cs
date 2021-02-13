@@ -13,5 +13,6 @@ namespace Entities.Concrete
         public string ModelYear { get; set; }
         public decimal DailyPrice { get; set; }  //Gunluk fiyati
         public string Description { get; set; } //Aciklama
+
     }
 }

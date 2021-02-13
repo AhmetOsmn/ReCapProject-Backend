@@ -50,5 +50,6 @@ namespace Business.Concrete
         {
             _carDal.Update(car);
         }
+
     }
 }

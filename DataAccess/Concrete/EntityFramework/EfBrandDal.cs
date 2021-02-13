@@ -7,5 +7,6 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfBrandDal : EfEntityRepositoryBase<Brand, ReCapDatabaseContext>, IBrandDal
     {
        
+
     }
 }

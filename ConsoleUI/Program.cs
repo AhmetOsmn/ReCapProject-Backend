@@ -24,7 +24,6 @@ namespace ConsoleUI
 
             DetailsTest();
         }
-
         private static void DetailsTest()
         {
             Console.WriteLine("Car Name" + "\t" + "Brand Name" + "\t" + "Color Name" + "\t" + "Daily Price");

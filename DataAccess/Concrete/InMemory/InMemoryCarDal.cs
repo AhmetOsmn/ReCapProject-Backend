@@ -24,6 +24,7 @@ namespace DataAccess.Concrete
             };
 
         }
+
         public void Add(Car car)
         {
             _cars.Add(car);
