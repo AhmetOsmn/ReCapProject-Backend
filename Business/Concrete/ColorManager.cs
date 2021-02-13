@@ -7,13 +7,13 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class ColorManager : ICarRentalService<Color>
+    public class ColorManager : IColorService
     {
-        IEntityRepository<Color> _colorDal;
+        IColorDal _colorDal;
 
-        public ColorManager(IEntityRepository<Color> carRentalDal)
+        public ColorManager(IColorDal colorDal)
         {
-            _colorDal = carRentalDal;
+            _colorDal = colorDal;
         }
         public List<Color> GetAll()
         {
@@ -28,7 +28,6 @@ namespace Business.Concrete
         {
             _colorDal.Add(color);
         }
-
         public void Delete(Color color)
         {
             _colorDal.Delete(color);

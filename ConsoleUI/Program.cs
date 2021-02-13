@@ -16,14 +16,75 @@ namespace ConsoleUI
             carManager = new CarManager(new EfCarDal());
             brandManager = new BrandManager(new EfBrandDal());
             colorManager = new ColorManager(new EfColorDal());
+            //Test();
 
+            //carManagerTest();
+            //brandManagerTest();
+            //colorManagerTest();
+
+            DetailsTest();
+        }
+
+        private static void DetailsTest()
+        {
+            Console.WriteLine("Car Name" + "\t" + "Brand Name" + "\t" + "Color Name" + "\t" + "Daily Price");
+            Console.WriteLine("-----------------------------------------------------------");
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + "\t" + car.BrandName + "\t" + car.ColorName + "\t" + car.DailyPrice);
+            }
+        }
+
+        private static void carManagerTest()
+        {
+            //carManager.Add(new Car { BrandId = 2, ColorId = 3, DailyPrice = 650, Description = "Deneme 2", ModelYear = "2022" });
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(brandManager.GetById(car.BrandId).Name);
+            }
+            //carManager.Delete(carManager.GetById(1003));
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(brandManager.GetById(car.BrandId).Name);
+            }
+        }
+
+        private static void brandManagerTest()
+        {
+            //brandManager.Add(new Brand { Name = "Tesla", Model = "5" });
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.Name + " " + brand.Model);
+            }
+            //brandManager.Delete(brandManager.GetById(3));
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.Name + " " + brand.Model);
+            }
+        }
+
+        private static void colorManagerTest()
+        {
+            //colorManager.Add(new Color {Name = "Turuncu"});
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.Name + " : " + color.ColorId.ToString());
+            }
+            //colorManager.Delete(colorManager.GetById(1002));
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.Name);
+            }
+        }
+
+        private static void Test()
+        {
             ShowCarsEf();
             Console.WriteLine("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
             ShowCarsEfByColorId(1);
             Console.WriteLine("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
             ShowCarsEfByBrandId(1);
         }
-
         public static void ShowCarsEf()
         {
             Console.WriteLine("-------BUTUN ARACLAR------ -");

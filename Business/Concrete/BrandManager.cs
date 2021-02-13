@@ -7,14 +7,15 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class BrandManager : ICarRentalService<Brand>
+    public class BrandManager : IBrandService
     {
-        IEntityRepository<Brand> _brandDal;
+        IBrandDal _brandDal;
 
-        public BrandManager(IEntityRepository<Brand> carRentalDal)
+        public BrandManager(IBrandDal brandDal)
         {
-            _brandDal = carRentalDal;
+            _brandDal = brandDal;
         }
+
         public List<Brand> GetAll()
         {
             return _brandDal.GetAll();
@@ -24,19 +25,11 @@ namespace Business.Concrete
         {
             return _brandDal.Get(p => p.BrandId == id);
         }
+
         public void Add(Brand brand)
         {
-            if (brand.Name.Length >= 2)
-            {
-                _brandDal.Add(brand);
-            }
-            else
-            {
-                Console.WriteLine("Marka ismi en az 2 harften olusmali");
-            }
-            
+            _brandDal.Add(brand);
         }
-
         public void Delete(Brand brand)
         {
             _brandDal.Delete(brand);
@@ -45,6 +38,8 @@ namespace Business.Concrete
         {
             _brandDal.Update(brand);
         }
+
+
 
     }
 }

@@ -1,18 +1,19 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Concrete
 {
-    public class CarManager : ICarRentalService<Car>
+    public class CarManager : ICarService
     {
-        IEntityRepository<Car> _carDal;
-        public CarManager(IEntityRepository<Car> carRentalDal)
+       ICarDal _carDal;
+        public CarManager(ICarDal carDal)
         {
-            _carDal = carRentalDal;
+            _carDal = carDal;
         }
         public List<Car> GetAll()
         {
@@ -33,11 +34,14 @@ namespace Business.Concrete
             return _carDal.GetAll(c => c.BrandId == brandId);
         }
 
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+        }
         public void Add(Car car)
         {
             _carDal.Add(car);
         }
-
         public void Delete(Car car)
         {
             _carDal.Delete(car);
