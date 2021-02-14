@@ -22,13 +22,25 @@ namespace ConsoleUI
             //brandManagerTest();
             //colorManagerTest();
 
-            DetailsTest();
+            //DetailsTest();
+
+            var result = carManager.GetCarDetails();
+
+            if(result.Success == true)
+            {
+                foreach (var car in carManager.GetCarDetails().Data)
+                {
+                    Console.WriteLine(car.BrandName + "\t" + car.CarName);
+                }
+            }
+
+
         }
         private static void DetailsTest()
         {
             Console.WriteLine("Car Name" + "\t" + "Brand Name" + "\t" + "Color Name" + "\t" + "Daily Price");
             Console.WriteLine("-----------------------------------------------------------");
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + "\t" + car.BrandName + "\t" + car.ColorName + "\t" + car.DailyPrice);
             }
@@ -37,26 +49,26 @@ namespace ConsoleUI
         private static void carManagerTest()
         {
             //carManager.Add(new Car { BrandId = 2, ColorId = 3, DailyPrice = 650, Description = "Deneme 2", ModelYear = "2022" });
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
-                Console.WriteLine(brandManager.GetById(car.BrandId).Name);
+                Console.WriteLine(brandManager.GetById(car.BrandId).Data);
             }
             //carManager.Delete(carManager.GetById(1003));
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
-                Console.WriteLine(brandManager.GetById(car.BrandId).Name);
+                Console.WriteLine(brandManager.GetById(car.BrandId).Data);
             }
         }
 
         private static void brandManagerTest()
         {
             //brandManager.Add(new Brand { Name = "Tesla", Model = "5" });
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name + " " + brand.Model);
             }
             //brandManager.Delete(brandManager.GetById(3));
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name + " " + brand.Model);
             }
@@ -65,12 +77,12 @@ namespace ConsoleUI
         private static void colorManagerTest()
         {
             //colorManager.Add(new Color {Name = "Turuncu"});
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name + " : " + color.ColorId.ToString());
             }
             //colorManager.Delete(colorManager.GetById(1002));
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name);
             }
@@ -87,12 +99,12 @@ namespace ConsoleUI
         public static void ShowCarsEf()
         {
             Console.WriteLine("-------BUTUN ARACLAR------ -");
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine("Arac Id: "+car.CarId + "-->" +
-                                  "Marka: "+brandManager.GetById(car.BrandId).Name + " " +
-                                  "Model: "+brandManager.GetById(car.BrandId).Model + " " +
-                                  "Renk: "+colorManager.GetById(car.ColorId).Name + " " +
+                                  "Marka: "+brandManager.GetById(car.BrandId).Data.Name + " " +
+                                  "Model: "+brandManager.GetById(car.BrandId).Data.Model + " " +
+                                  "Renk: "+colorManager.GetById(car.ColorId).Data.Name + " " +
                                   "Yil: "+car.ModelYear + " " +
                                   "Aciklama: "+car.Description);
             }
@@ -101,12 +113,12 @@ namespace ConsoleUI
         {
             Console.WriteLine("ColorId= {0} OLAN ARACLAR", i);
 
-            foreach (var car in carManager.GetCarsByColorId(i))
+            foreach (var car in carManager.GetCarsByColorId(i).Data)
             {
                 Console.WriteLine("Arac Id: " + car.CarId + ":" +
-                                  brandManager.GetById(car.BrandId).Name + " " +
-                                  brandManager.GetById(car.BrandId).Model + " " +
-                                  colorManager.GetById(car.ColorId).Name + " " +
+                                  brandManager.GetById(car.BrandId).Data.Name + " " +
+                                  brandManager.GetById(car.BrandId).Data.Model + " " +
+                                  colorManager.GetById(car.ColorId).Data.Name + " " +
                                   car.ModelYear + " " +
                                   car.Description);
             }
@@ -115,12 +127,12 @@ namespace ConsoleUI
         {
             Console.WriteLine("BrandId= {0} OLAN ARACLAR", i);
 
-            foreach (var car in carManager.GetCarsByBrandId(i))
+            foreach (var car in carManager.GetCarsByBrandId(i).Data)
             {
                 Console.WriteLine("Arac Id: " + car.CarId + ":" +
-                                  brandManager.GetById(car.BrandId).Name + " " +
-                                  brandManager.GetById(car.BrandId).Model + " " +
-                                  colorManager.GetById(car.ColorId).Name + " " +
+                                  brandManager.GetById(car.BrandId).Data.Name + " " +
+                                  brandManager.GetById(car.BrandId).Data.Model + " " +
+                                  colorManager.GetById(car.ColorId).Data.Name + " " +
                                   car.ModelYear + " " +
                                   car.Description);
             }
