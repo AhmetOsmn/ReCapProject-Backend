@@ -11,31 +11,41 @@ namespace ConsoleUI
         static CarManager carManager;
         static BrandManager brandManager;
         static ColorManager colorManager;
+        static CustomerManager customerManager;
+        static RentalManager rentalManager;
+        static UserManager userManager;
+
         static void Main(string[] args)
         {
             carManager = new CarManager(new EfCarDal());
             brandManager = new BrandManager(new EfBrandDal());
             colorManager = new ColorManager(new EfColorDal());
-            //Test();
+            customerManager = new CustomerManager(new EfCustomerDal());
+            rentalManager = new RentalManager(new EfRentalDal());
+            userManager = new UserManager(new EfUserDal());
 
+            //Test();
             //carManagerTest();
             //brandManagerTest();
             //colorManagerTest();
-
             //DetailsTest();
+            //ResultTest();
+           
+        }
 
+        private static void ResultTest()
+        {
             var result = carManager.GetCarDetails();
 
-            if(result.Success == true)
+            if (result.Success == true)
             {
                 foreach (var car in carManager.GetCarDetails().Data)
                 {
                     Console.WriteLine(car.BrandName + "\t" + car.CarName);
                 }
             }
-
-
         }
+
         private static void DetailsTest()
         {
             Console.WriteLine("Car Name" + "\t" + "Brand Name" + "\t" + "Color Name" + "\t" + "Daily Price");
