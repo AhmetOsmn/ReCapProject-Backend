@@ -1,8 +1,11 @@
 ﻿using Business.Abstract;
 using Business.Contants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,10 +23,6 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<Brand>>(Messages.MaintenanceTime);
-            }
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
         }
 
@@ -34,6 +33,7 @@ namespace Business.Concrete
 
         public IResult Add(Brand brand)
         {
+            ValidationTool.Validate(new BrandValidator(), brand);
             _brandDal.Add(brand);
             return new Result(true, Messages.BrandAdded);
         }
