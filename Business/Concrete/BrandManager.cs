@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Contants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -31,9 +32,9 @@ namespace Business.Concrete
             return new SuccessDataResult<Brand>(_brandDal.Get(g => g.BrandId == id));
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
-            ValidationTool.Validate(new BrandValidator(), brand);
             _brandDal.Add(brand);
             return new Result(true, Messages.BrandAdded);
         }
