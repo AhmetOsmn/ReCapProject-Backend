@@ -39,5 +39,14 @@ namespace Business.Contants
         public static string RentalsListed = "Kiralamalar Listelendi";
         public static string RentalDeleted = "Kiralama Silindi";
         public static string RentalUpdated = "Kiralama Guncellendi";
+
+        public static string ImageAdded = "Resim Eklendi";
+        public static string ImagesListed = "Resimler Listelendi";
+        public static string ImageDeleted = "Resim Silindi";
+        public static string ImageUpdated = "Resim Guncellendi";
+
+        public static string CarImageCountOfCarError = "Fotograf hatasi";
+
+        public static string CarImageLimitExceeded = "CarImage Limit Exceeded";
     }
 }

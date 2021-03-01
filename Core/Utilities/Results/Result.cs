@@ -8,7 +8,7 @@ namespace Core.Utilities.Results
     {
         public Result(bool success, string message) : this(success)
         {
-            Success = success;
+            Message = message;
         }
         public Result(bool success)
         {
