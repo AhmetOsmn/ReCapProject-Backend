@@ -1,3 +1,3 @@
 # ReCapProject
-YGYK - 7.Gun - Odev2
+-- YGYK -- 
 Arac kiralama sistemini simule ediyoruz.
