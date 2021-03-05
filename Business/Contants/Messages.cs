@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Contants
@@ -48,5 +50,22 @@ namespace Business.Contants
         public static string CarImageCountOfCarError = "Fotograf hatasi";
 
         public static string CarImageLimitExceeded = "CarImage Limit Exceeded";
+
+        public static string AuthorizationDenied = "Yetkin yok";
+        public static string UserRegistered = "Kayit oldu";
+
+        public static string UserNotFound = "Kullanici bulunamadi";
+
+        public static string PasswordError = "Parola hatasi";
+
+        public static string SuccessfulLogin = "Basarili giris";
+
+        public static string UserAlreadyExists = "Kullanici mevcut";
+
+        public static string AccessTokenCreated = "Token olusturuldu";
+
+        public static string ClaimsListed = "Yetkiler listelendi";
+
+        public static string GetByMail = "Maile gore filtrelendi";
     }
 }
