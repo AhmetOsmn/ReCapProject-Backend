@@ -33,7 +33,7 @@ namespace ConsoleUI
            
         }
 
-        private static void ResultTest()
+        private static void ResultTest(int id)
         {
             var result = carManager.GetCarDetails();
 
@@ -46,7 +46,7 @@ namespace ConsoleUI
             }
         }
 
-        private static void DetailsTest()
+        private static void DetailsTest(int id)
         {
             Console.WriteLine("Car Name" + "\t" + "Brand Name" + "\t" + "Color Name" + "\t" + "Daily Price");
             Console.WriteLine("-----------------------------------------------------------");

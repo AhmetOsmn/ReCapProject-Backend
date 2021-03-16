@@ -4,6 +4,8 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System.Linq;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -23,7 +25,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  CarName = brand.Model,
                                  BrandName = brand.Name,
                                  ColorName = color.Name,
-                                 DailyPrice = car.DailyPrice
+                                 DailyPrice = car.DailyPrice,
+                                 ModelYear = car.ModelYear
                              };
                 return result.ToList();   
             }
