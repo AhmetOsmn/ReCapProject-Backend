@@ -89,7 +89,8 @@ namespace Business.Concrete
         {
             try
             {
-                string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\Images\default.jpg");
+                //string path = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).FullName + @"\Images\default.jpg");
+                string path = @"\Images\default.jpg";
                 var result = _carImageDal.GetAll(cim => cim.CarId == carId).Any();
                 if (!result)
                 {
