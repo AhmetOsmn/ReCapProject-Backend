@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -67,5 +68,8 @@ namespace Business.Contants
         public static string ClaimsListed = "Yetkiler listelendi";
 
         public static string GetByMail = "Maile gore filtrelendi";
+
+        public static string Basarisiz = "Basarisiz";
+        public static string Listeleme = "Listeleme yapildi";
     }
 }
